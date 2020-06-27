@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+    db:
+        image:
+            postgres:12-alpine
+        env_file: .env
+        volumes:
+            - db_data:/var/lib/postgresql/data/pgdata
+    
+    webapp:
+        build:
+            context: .
+        env_file: .env

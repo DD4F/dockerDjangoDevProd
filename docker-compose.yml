@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+    db:
+        extends:
+            file: base.yml
+            service: db
+
+    webapp:
+        extends:
+            file: base.yml
+            service: webapp
+        build:
+            args:
+                - DJANGO_ENV=dev
+        ports: 
+            - "8001:8000"
+        volumes: 
+            - .:/webapp
+        command: python manage.py runserver 0.0.0.0:8000
+        environment:
+            - VIRTUAL_HOST=webapp.dd4f.sh,www.webapp.dd4f.sh
+        depends_on:
+            - db
+
+volumes:
+    db_data:
+        driver: local
+    
