@@ -2,4 +2,4 @@
 -r base.txt
 
 django-extensions==2.2.9
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
